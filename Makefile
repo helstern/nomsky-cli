@@ -25,11 +25,9 @@ test: compile
 	bash bin/phpunit.sh --configuration src/test/config/phpunit.xml.dist
 
 package:
-	ln -s src/package/box.json box.json
-	php --define phar.readonly=0 bin/box.phar build
-	rm box.json
+	php --define phar.readonly=0 bin/box.phar build --configuration phar.box.json
 
-.PHONY: initialize vagrant
+.PHONY: initialize
 
 
 
