@@ -3,6 +3,8 @@
 
     , "description": "cli client for nomsky"
 
+    , "type" : "project"
+
     , "license": "proprietary"
 
     , "authors": [

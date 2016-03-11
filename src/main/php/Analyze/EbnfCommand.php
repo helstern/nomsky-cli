@@ -1,6 +1,6 @@
 <?php
 
-namespace Nomsky\Analyze;
+namespace Helstern\Nomsky\Analyze;
 
 use Symfony\Component\Console\Command;
 use Symfony\Component\Console\Input\InputInterface;
