@@ -1,0 +1,10 @@
+{
+  "chmod": "0755",
+  "directories": [
+    "src/main/php"
+  ],
+  "git-version": "0.1-dev",
+  "main": "bin/nomsky.php",
+  "output": "target/nomsky.phar",
+  "stub": true
+}
