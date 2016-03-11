@@ -1,19 +1,25 @@
 {
-  "chmod": "0755",
-  "directories": [
-    "src/main/bin",
-    "src/main/php",
-    "composer"
-  ],
-  "finder": [
+  "chmod": "0755"
+
+  , "directories": [
+    "src/main/bin"
+    , "src/main/php"
+    , "composer"
+  ]
+
+  , "finder": [
     {
-      "name": "*.php",
-      "exclude": ["Tests"],
-      "in": "composer"
+      "name": "*.php"
+      , "exclude": ["Tests"]
+      , "in": "composer"
     }
-  ],
-  "git-version": "package_version",
-  "main": "bin/nomsky.php",
-  "output": "target/nomsky.phar",
-  "stub": true
+  ]
+
+  , "git-version": "package_version"
+
+  , "main": "bin/nomsky.php"
+
+  , "output": "target/nomsky.phar"
+
+  , "stub": true
 }
