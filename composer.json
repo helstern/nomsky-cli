@@ -1,0 +1,42 @@
+{
+    "name": "helstern/nomsky-cli"
+
+    , "description": "cli client for nomsky"
+
+    , "license": "proprietary"
+
+    , "authors": [
+        {
+            "name": "Radu Helstern",
+            "email": "radu.helstern@gmail.com"
+        }
+    ]
+
+    , "config" : {
+        "sort-packages" : true
+    }
+
+    , "minimum-stability": "dev"
+
+    , "repositories" : [
+        {
+            "type" : "vcs",
+            "url": "https://github.com/helstern/nomsky"
+        }
+    ]
+
+    , "autoload": {
+        "psr-4": {
+            "Helstern\\Nomsky\\": "./src/main/php"
+        }
+    }
+
+    , "require": {
+        "helstern/nomsky": "~1.0",
+        "symfony/console": "^3.0"
+    }
+
+    , "config": {
+        "vendor-dir" : "./composer"
+    }
+}
