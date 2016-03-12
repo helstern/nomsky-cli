@@ -1,8 +1,16 @@
 <?php
 
 use Helstern\Nomsky\Analyze;
-use Symfony\Component\Console\Application;
+use Helstern\Nomsky\Application\CliApplicationFactory;
+use Helstern\Nomsky\DependencyInjection\PhpConfigResourceLoader;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-$application = new Application('Nomsky Console', '@package_version@');
-$application->add(new Analyze\EbnfCommand());
+$container = new ContainerBuilder();
+$loader = new PhpConfigResourceLoader($container, new FileLocator(dirname(__DIR__).'/resources'));
+$loader->load('services.php');
+
+/** @var CliApplicationFactory $factory */
+$factory = $container->get('application_factory');
+$application = $factory->createApplication('Nomsky Console', '@package_version@');
 $application->run();

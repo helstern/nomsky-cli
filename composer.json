@@ -16,6 +16,9 @@
 
     , "config" : {
         "sort-packages" : true
+        , "process-timeout" : 600
+        , "preferred-install" : "dist"
+        , "vendor-dir" : "./composer"
     }
 
     , "minimum-stability": "dev"
@@ -35,10 +38,10 @@
 
     , "require": {
         "helstern/nomsky": "~1.0",
-        "symfony/console": "^3.0"
-    }
-
-    , "config": {
-        "vendor-dir" : "./composer"
+        "symfony/config": "^3.0",
+        "symfony/console": "^3.0",
+        "symfony/dependency-injection": "^3.0",
+        "symfony/filesystem": "^3.0",
+        "symfony/yaml": "^3.0"
     }
 }
