@@ -4,13 +4,20 @@
   , "directories": [
     "src/main/bin"
     , "src/main/php"
+    , "src/main/resources"
     , "composer"
+  ]
+
+  , "files": [
+    "src/main/resources/services.yml"
   ]
 
   , "finder": [
     {
       "name": "*.php"
-      , "exclude": ["Tests"]
+      , "exclude": [
+          "Tests"
+      ]
       , "in": "composer"
     }
   ]
