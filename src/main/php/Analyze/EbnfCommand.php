@@ -4,15 +4,20 @@ use Symfony\Component\Console\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class EbnfCommand extends Command\Command
 {
     /** @var ConsoleOptions */
     private $conf;
 
-    public function __construct(ConsoleOptions $conf)
+    /** @var Filesystem */
+    private $filesystem;
+
+    public function __construct(ConsoleOptions $conf, Filesystem $filesystem)
     {
         $this->conf = $conf;
+        $this->filesystem = $filesystem;
         parent::__construct(null);
     }
 
@@ -20,9 +25,14 @@ class EbnfCommand extends Command\Command
     {
         $this
             ->setName('analyze:ebnf')
-            ->setDescription('Say hello')
+            ->setDescription('Analyze an ebnf grammar')
         ;
 
+        //grammar file
+        $description = 'the location of the grammar file';
+        $this->addOption('grammar', null, InputOption::VALUE_REQUIRED, $description);
+
+        //notation
         $description = sprintf(
             'the notation used by the grammar. must be one of: %s',
             implode(',', $this->conf->availableNotations())
@@ -32,6 +42,68 @@ class EbnfCommand extends Command\Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('analyze ebnf');
+        if(! $this->verifySyntax($input, $output)) {
+            return -1;
+        }
+
+        $grammarPath = $this->resolveFilePath($input, $output);
+        if (empty($grammarPath)) {
+            return -1;
+        }
+
+        $grammar = file_get_contents($grammarPath);
+        $output->write($grammar);
     }
+
+    /**
+     * Returns the full path to the grammar file or null if path does not exists
+     *
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return null|string
+     *
+     */
+    private function resolveFilePath(InputInterface $input, OutputInterface $output)
+    {
+        $path = $input->getOption('grammar');
+
+        if (! $this->filesystem->isAbsolutePath($path)) {
+            $dir = getcwd();
+            $resolvedPath = $dir . DIRECTORY_SEPARATOR . $path;
+        } else {
+            $resolvedPath = $path;
+        }
+
+        if (file_exists($resolvedPath) && is_file($resolvedPath)) {
+            return $resolvedPath;
+        }
+
+        $msg = sprintf('<error>file not found: %s</error>', $resolvedPath);
+        $output->writeln($msg);
+
+        return null;
+    }
+
+    private function verifySyntax(InputInterface $input, OutputInterface $output)
+    {
+        $input->validate();
+
+        $option = $input->getOption('grammar');
+        if (empty($option)) {
+            $msg = sprintf('<error>missing required value for --grammar</error>', $option);
+            $output->writeln($msg);
+            return false;
+        }
+
+        $option = $input->getOption('notation');
+        if (! $this->conf->validateNotation($option)) {
+            $msg = sprintf('<error>unknown value for --notation: %s</error>', $option);
+            $output->writeln($msg);
+            return false;
+        }
+        return true;
+    }
+
+
 }

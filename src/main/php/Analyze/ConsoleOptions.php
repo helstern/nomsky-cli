@@ -1,5 +1,8 @@
 <?php namespace Helstern\Nomsky\Analyze;
 
+/**
+ * Provides default and available values for console options
+ */
 class ConsoleOptions
 {
     /**
@@ -19,11 +22,13 @@ class ConsoleOptions
     }
 
     /**
+     * Checks if $notation is one of the available notations
+     *
      * @param $notation
      *
      * @return bool
      */
-    public function hasNotation($notation)
+    public function validateNotation($notation)
     {
         if (empty($notation)) {
             return false;
