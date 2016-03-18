@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ca96077ed8bbea1f8c7793fbccf7c2b5",
-    "content-hash": "576eed871536f50f5af4e06e283642e2",
+    "hash": "6673deaa53d428bdd8e2b0db7c72eb75",
+    "content-hash": "79e78da94116dd3634993a393d3015e8",
     "packages": [
         {
-            "name": "helstern/nomsky",
-            "version": "v1.1.0-alpha",
+            "name": "helstern/nomsky-lib",
+            "version": "v1.1.5-alpha",
             "source": {
                 "type": "git",
-                "url": "https://github.com/helstern/nomsky.git",
-                "reference": "a5181ccc467efa1b294820bc27f7d8239fe4bfb8"
+                "url": "https://github.com/helstern/nomsky-lib.git",
+                "reference": "e93e7e280360872cc4ad7ad020f8a0a93386bca3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helstern/nomsky/zipball/a5181ccc467efa1b294820bc27f7d8239fe4bfb8",
-                "reference": "a5181ccc467efa1b294820bc27f7d8239fe4bfb8",
+                "url": "https://api.github.com/repos/helstern/nomsky-lib/zipball/e93e7e280360872cc4ad7ad020f8a0a93386bca3",
+                "reference": "e93e7e280360872cc4ad7ad020f8a0a93386bca3",
                 "shasum": ""
             },
             "require-dev": {
@@ -48,10 +48,10 @@
             ],
             "description": "cs grammar tools",
             "support": {
-                "source": "https://github.com/helstern/nomsky/tree/v1.1.0-alpha",
-                "issues": "https://github.com/helstern/nomsky/issues"
+                "source": "https://github.com/helstern/nomsky-lib/tree/v1.1.5-alpha",
+                "issues": "https://github.com/helstern/nomsky-lib/issues"
             },
-            "time": "2016-03-09 21:20:48"
+            "time": "2016-03-18 01:18:17"
         },
         {
             "name": "symfony/config",
@@ -63,7 +63,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/f1f7ccf4c17454cf14f43178624c4890cba788d8",
+                "url": "https://api.github.com/repos/symfony/config/zipball/2d23e8b661e2d9658932902f5a40445cc5e5b359",
                 "reference": "f1f7ccf4c17454cf14f43178624c4890cba788d8",
                 "shasum": ""
             },
@@ -116,7 +116,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a2c98b8fa4dbf72980178da8f609431727d0d9cd",
+                "url": "https://api.github.com/repos/symfony/console/zipball/902185ebdfbd09b01974cb1f3cb65c64e6c701d1",
                 "reference": "fc80e5986663859afb84d26baeb41f17ac330e43",
                 "shasum": ""
             },
@@ -235,7 +235,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/5a417b32d90765f7400c1e8a73532c688b993580",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/d46a5ec18b78bdd0ab04798d6710ca91c3588837",
                 "reference": "5a417b32d90765f7400c1e8a73532c688b993580",
                 "shasum": ""
             },
