@@ -1,5 +1,6 @@
 <?php namespace Helstern\Nomsky\Analyze;
 
+use Helstern\Nomsky\Grammar\GrammarFactory;
 use Symfony\Component\Console\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -51,8 +52,14 @@ class EbnfCommand extends Command\Command
             return -1;
         }
 
-        $grammar = file_get_contents($grammarPath);
-        $output->write($grammar);
+        $grammarFactory = new GrammarFactory();
+        $grammar = $grammarFactory->ebnfFromFile($grammarPath);
+
+        $analyzer = new LLAnalyzer();
+        $lookahead = $analyzer->analyze($grammar);
+
+        $msg = sprintf('grammar is LL(%s)', $lookahead);
+        $output->writeln($msg);
     }
 
     /**
