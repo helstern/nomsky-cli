@@ -66,12 +66,12 @@ class EbnfCommand extends Command\Command
      * Returns the full path to the grammar file or null if path does not exists
      *
      * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param \Symfony\Component\Console\Output\OutputInterface $errorOutput
      *
      * @return null|string
      *
      */
-    private function resolveFilePath(InputInterface $input, OutputInterface $output)
+    private function resolveFilePath(InputInterface $input, OutputInterface $errorOutput)
     {
         $path = $input->getOption('grammar');
 
@@ -87,7 +87,7 @@ class EbnfCommand extends Command\Command
         }
 
         $msg = sprintf('<error>file not found: %s</error>', $resolvedPath);
-        $output->writeln($msg);
+        $errorOutput->writeln($msg);
 
         return null;
     }
