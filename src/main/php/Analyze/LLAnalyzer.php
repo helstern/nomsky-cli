@@ -11,6 +11,7 @@ use Helstern\Nomsky\GrammarAnalysis\Algorithms\PredictSetCalculator;
 use Helstern\Nomsky\GrammarAnalysis\ParseSets;
 use Helstern\Nomsky\GrammarAnalysis\ParseTable\LLParseTableBuilder;
 use Helstern\Nomsky\GrammarAnalysis\Production\ArraySet;
+use Helstern\Nomsky\GrammarAnalysis\Production\NormalizedSet;
 use Helstern\Nomsky\GrammarAnalysis\Production\Normalizer;
 
 class LLAnalyzer
@@ -80,14 +81,24 @@ class LLAnalyzer
     public function calculateLookAhead(ParseSets\LookAheadSets $lookaheadSets, array $terminals, array $nonTerminals)
     {
         $llTableBuilder = new LLParseTableBuilder();
-        $llTable = $llTableBuilder
+        $llTableBuilder
             ->addLookAheadSets($lookaheadSets)
             ->addTerminals($terminals)
             ->addNonTerminals($nonTerminals)
         ;
-        $llTable->build();
 
-        return 1;
+        $llTable = $llTableBuilder->build();
+
+        $lookahead = 0;
+        /** @var NormalizedSet $terminalSet */
+        foreach ($llTable as $key => $terminalSet) {
+            $size = $terminalSet->count();
+            if ($size > $lookahead ) {
+                $lookahead = $size;
+            }
+        }
+
+        return $lookahead;
     }
 
     /**
@@ -117,7 +128,7 @@ class LLAnalyzer
             ->generateEmptySet($productions, $emptySet)
             ->generateFirstSets($productions, $firstSets, $emptySet)
             ->generateFollowSets($productions, $start, $followSets, $firstSets)
-            ->generateLookAheadSets($productions, $lookaheadSets, $firstSets, $followSets)
+            ->generateLookAheadSets($productions, $lookaheadSets, $followSets, $firstSets)
         ;
     }
 
