@@ -21,7 +21,7 @@
         , "vendor-dir" : "./composer"
     }
 
-    , "minimum-stability": "dev"
+    , "minimum-stability": "alpha"
 
     , "repositories" : [
         {
@@ -37,7 +37,7 @@
     }
 
     , "require": {
-        "helstern/nomsky-lib": "~1.0",
+        "helstern/nomsky-lib": "~1.2",
         "symfony/config": "^3.0",
         "symfony/console": "^3.0",
         "symfony/dependency-injection": "^3.0",
