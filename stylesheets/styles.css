@@ -322,3 +322,32 @@ footer {
     color:#444;
   }
 }
+
+/** custom **/
+
+header dl {
+  clear:both;
+}
+
+header dl dt {
+  float:left;
+  clear:right;
+}
+
+header dl dt:after {
+  content: ": ";
+}
+
+header dl dd {
+  margin: 0;
+  float: right;
+}
+
+header dl:after, header dl dd:after {
+  content: " ";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
